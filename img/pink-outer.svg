@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="160px" height="162px" viewBox="0 0 160 162" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2 (9961) - http://www.bohemiancoding.com/sketch -->
+    <title>OuterPink</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <path d="M120.966024,151.335018 C109.14262,158.120882 95.4444878,162 80.8421053,162 C36.1942434,162 0,125.735065 0,81 C0,36.2649353 36.1942434,0 80.8421053,0 C119.769836,0 152.271289,27.5679041 159.960285,64.2816219 L145.603873,67.4315654 C139.347126,37.4897465 112.799944,15 81,15 C44.5492065,15 15,44.5492065 15,81 C15,117.450793 44.5492065,147 81,147 C92.8251542,147 103.923954,143.890107 113.523145,138.443574 L120.966024,151.335018 Z" id="OuterPink" fill="#FF3D7F" sketch:type="MSShapeGroup"></path>
+    </g>
+</svg>

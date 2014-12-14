@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<!--[if IE]><![endif]-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>CheapAzz!</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+	<link rel="icon" type="image/png" href="favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+	<meta name="description" content="CheapAzz. Videp party!">
+	<meta name="keywords" content="CheapAzz, party, video" />
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	
+	<meta property="og:title" content="CheapAzz!">
+    <meta property="og:url" content="http://cheapazz.club/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="http://cheapazz.club/img/fb-image.png"> <!-- 1200x630 pixels -->
+    <meta property="og:description" content="CheaAzz!">
+	
+	<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Orbitron:500,900,400' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="style.css">
+	<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-57626826-1', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+</head>
+<body>
+    <div class="mobile-msg" style="display: none;">
+        <div class="svg-logo">
+            <img class="pink-outer" src="img/pink-outer.svg">
+            <img class="yellow-inner" src="img/yellow-inner.svg">
+            <img class="teal-inner" src="img/teal-inner.svg">
+        </div>
+        <h3><span>Cheap</span><span>Azz</span><span>!</span></h3>
+        <p>CheapAzz! for mobile is coming soon! In the meantime, enjoy the ultimate party radio on your modern desktop browser!</p>
+    </div>
+    <div class="overlay">
+        <div class="svg-group">
+            <div class="loader-wrapper right">
+                <img class="pink-outer" src="img/pink-outer.svg">
+            </div>
+            <div class="loader-wrapper left">
+                <img class="yellow-inner" src="img/yellow-inner.svg">
+            </div>
+            <div class="loader-wrapper right">
+                <img class="teal-inner" src="img/teal-inner.svg">
+            </div>
+        </div>
+        <h1><span>Cheap</span><span>Azz</span><span>!</span></h1>
+    </div>
+    
+    <aside class="controlsWrapper">
+        <div class="controls">
+            <section class="svg-logo">
+                <img class="pink-outer" src="img/pink-outer.svg">
+                <img class="yellow-inner" src="img/yellow-inner.svg">
+                <img class="teal-inner" src="img/teal-inner.svg">
+            </section>
+            <h3><span>Cheap</span><span>Azz</span><span>!</span></h3>
+            <section class="button-container">
+                <button type="button" class="togglePlayer pause" id="togglePlayer">
+                    <span></span>
+                    <span></span>
+                </button>
+            </section>
+            <section class="button-container">
+                <button type="button" class="inline button newSong" id="nextSong">New song</button>
+            </section>
+            <section class="button-container">
+                <button type="button" class="inline button newVideo" id="newVideo">New video</button>
+            </section>
+            <section class="button-container">
+                <button type="button" class="inline button fullscreen" id="fullScreen">Fullscreen</button>
+            </section>
+            <section class="button-container container-inline">
+                <a href="https://twitter.com/Cheap_Azz" target="_blank"><button class="icon-twitter social"></button></a>
+            </section>
+            <section class="button-container container-inline">
+                <a href="http://instagram.com/cheap_azz/" target="_blank"><button class="icon-instagram social"></button></a>
+            </section>
+        </div>
+    </aside>
+    
+    <div id="ytplayer"></div>
+    <div id="ytplayerMusic"></div>
+    <div class="clickPrevent"></div>
+    <div class="overlay-winning" style="display:none;">
+        <h1 class="js-winning">#</h1>
+    </div>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script src="http://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+    
+</body>
+</html>
