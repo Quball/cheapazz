@@ -31,15 +31,15 @@
 .icon-instagram:before {
     font-family: 'icomoon';
 	content: "\f16d";
-    margin-left: 10px;
+    margin-left: 8px;
 }
 
-button.social {
+p.social {
     background: none;
     border: none;
     font-size: 28px;
-    line-height: 60px;
     color: #00FFBF;
+    margin: 20px 0;
 }
 
 button {cursor: pointer;}
@@ -52,10 +52,15 @@ body {
     overflow: hidden;
     background: black;
 }
+
 hr {
     width: 100%;
     margin: 40px -5px 20px;
     border: 1px solid white;
+}
+
+a, a:hover, a:active {
+    text-decoration: none;
 }
 
 .hidden {
@@ -153,7 +158,7 @@ iframe#ytplayer {
         float: left;
         width: 180px;
         height: 100%;
-        background: #16252d;
+        background: #2A424F;
         padding: 0 10px;
         padding-top: 30px;
     }
@@ -180,6 +185,7 @@ iframe#ytplayer {
         .controls h3, .mobile-msg h3 {
             text-align: center;
             margin: 0;
+            font-size: 22px;
         }
         
         .controls h3 span:first-child, .mobile-msg h3 span:first-child {
@@ -235,7 +241,7 @@ iframe#ytplayer {
 .controls .togglePlayer {
     position: relative;
     background: none;
-    border: 5px solid #ff3c7d;
+    border: 5px solid #FF3D7F;
     border-radius: 50%;
     width: 56px;
     height: 56px;
@@ -287,6 +293,45 @@ iframe#ytplayer {
         display: none;
     }
     
+    .controls .social-container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+    
+    .controls .social-container .submit-msg {
+        width: 0px;
+        height: 0px;
+        overflow: hidden;
+        position: absolute;
+        left: 191px;
+        top: 9px;
+        background: #2A424F;
+        color: white;
+        line-height: 24px;
+        font-family: 'orbitron';
+        border-radius: 3px;
+/*         padding: 0 7px; */
+        z-index: -1;
+        -webkit-transition: all 500ms linear;
+                transition: all 500ms linear;
+    }
+    
+    .controls .social-container .submit-msg p {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #00FFBF;
+        margin: 0;
+        padding: 15px 7px;
+    }
+    
+    .controls .social-container .submit-msg.in {
+        width: 340px;
+        height: 106px;  
+    }
+    
 /* end play / pause btn*/
     
 /* Sidebar buttons */
@@ -294,20 +339,21 @@ iframe#ytplayer {
 .controls .button-container .button {
     background: none;
     color: #00FFBF;
-    width: 136px;
-    height: 36px;
+    width: 148px;
+    height: 38px;
     border: 2px solid #00FFBF;
     box-shadow: inset 0px 4px 10px rgba(0,0,0,.2), 0px 5px 5px 0px rgba(0,0,0,.2);
     border-radius: 2px;
     text-transform: uppercase;
     margin: 10px auto;
-    font-size: 12px;
+    font-size: 14px;
     padding-top: 7px;
     letter-spacing: 0.5px;
     -webkit-transition: background 500ms linear;
+            transition: background 500ms linear;
 }
 
-    .controls .button-container .button.newSong:hover {
+    .controls .button-container .button.newSong:hover, .controls .button-container .button.submit:hover {
         background: #00FFBF;
         color: #233741;
     }
@@ -323,12 +369,13 @@ iframe#ytplayer {
     }
     
     .controls .button-container .button.fullscreen {
-        border-color: #ff3c7d;
-        color: #ff3c7d;
+        border-color: #FF3D7F;
+        color: #FF3D7F;
+        font-weight: 500;
     }
     
     .controls .button-container .button.fullscreen:hover {
-        background: #ff3c7d;
+        background: #FF3D7F;
         color: #233741;
     }
 
@@ -495,6 +542,10 @@ iframe#ytplayer {
             -webkit-transform: scale(1.2);
                     transform: scale(1.2);
         }
+        100% {
+            -webkit-transform: scale(.7);
+                    transform: scale(.7);            
+        }
     }
     @keyframes bounce {
         0%  { 
@@ -510,5 +561,9 @@ iframe#ytplayer {
             -webkit-transform: scale(1.2);
                     transform: scale(1.2);
         }
+        100% {
+            -webkit-transform: scale(.7);
+                    transform: scale(.7);            
+        }    
     }
 /* End overlay loader */

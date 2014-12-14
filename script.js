@@ -377,6 +377,7 @@ function setup() {
     var toggleVideoStatus = $('#togglePlayer');
     var newVideo = $('#newVideo');
     var newSong = $('#nextSong');
+    var submitBtn = $('#submit');
     
     toggleVideoStatus.on('click', function(){
         
@@ -413,6 +414,23 @@ function setup() {
         /* log( _music.getTitle('music', songIndex)); */
         musicPlayer.setPlaybackQuality(maxQuality);
         musicPlayer.loadVideoById(list[songIndex]);
+    });
+    
+    submitBtn.on('click', function(){
+        if($('.submit-msg').hasClass('in')) {
+            $('.submit-msg').find('p').fadeOut('fast', function(){
+                $('.submit-msg').removeClass('in');    
+            });
+        } else {
+            $('.submit-msg').addClass('in');
+        }
+        
+        $('.submit-msg').one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
+        function() {
+            if($(this).hasClass('in')) {
+                $(this).find('p').fadeIn();
+            }
+        });
     });
 }
 
