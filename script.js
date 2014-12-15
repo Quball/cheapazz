@@ -60,12 +60,18 @@ function googleApiClientReady() {
                                 pageToken: response.result.nextPageToken
                             });
                             request.execute(function(response) {
-                                var nextPage = addToMusicList(response.items);
+                                var nextPage = addToMusicList(response.items, 'id');
+                                var nextDescPage = addToMusicList(response.items, 'desc');
                                 var tmpMusicList = _music.getList('music');
+                                var tmpMusicDescList = _music.getDescList('music');
                                 $.each(nextPage, function(k, v){
                                     tmpMusicList.push(v);
                                 });
-                                 _music.setList(tmpMusicList);
+                                $.each(nextDescPage, function(k, v){
+                                    tmpMusicDescList.push(v);
+                                });
+                                _music.setList(tmpMusicList);
+                                _music.setDescList(tmpMusicDescList); 
                             });
                         }
                         _music = new listSetup(k, response, function(e){
@@ -78,11 +84,17 @@ function googleApiClientReady() {
     }
 }
 
-function addToMusicList(newListItems) {
+function addToMusicList(newListItems, type) {
     var tmpList = [];
-    $.each(newListItems, function(k, v){
-       tmpList.push(v.snippet.resourceId.videoId);
-    });
+    if(type == 'id') {
+        $.each(newListItems, function(k, v){
+           tmpList.push(v.snippet.resourceId.videoId);
+        });
+    } else if(type == 'desc') {
+        $.each(newListItems, function(k, v){
+           tmpList.push(v.snippet.title);
+        });
+    }
     return tmpList;
 }
 
@@ -96,7 +108,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var windowW = $(window).innerWidth();
 var windowH = $(window).innerHeight();
 var videoPlayer, musicPlayer;
-var playerObj, playerSettings = [60,90], canSeek = false, canPlay = true, nextVid, getTimeInterval, currentVideo, currentTime, endTime, muted = false;
+var playerObj, playerSettings = [60,90], canSeek = false, canPlay = true, nextVid, getTimeInterval, currentVideo, currentTime, endTime, muted = false, currentSong;
 var maxQuality = 'hd720';
 var overlay = $('.overlay');
 var title = $('#js-title');
@@ -104,6 +116,15 @@ var vList, videolistLength, mList, musiclistLength;
 var clickPause = false; 
 var clickPlay = false;
 var winning = false;
+
+function startSong() {
+    mList = _music.getList('music');
+    var rand = getRandom(0, mList.length);
+    currentSong = _music.getTitle('music', rand);
+    log('Current song ' + currentSong);
+    musicPlayer.setPlaybackQuality(maxQuality);
+    musicPlayer.loadVideoById(mList[rand]);
+}
 
 function youtubeSetup(type, list) {
     
@@ -114,11 +135,7 @@ function youtubeSetup(type, list) {
         function onMusicReady(event) {
             
             musicPlayer.setVolume(40);
-            var rand = getRandom(0, musiclistLength);
-            mList = _music.getList('music');
-            musicPlayer.setPlaybackQuality(maxQuality);
-            musicPlayer.loadVideoById(mList[rand]);
-            title.html( _music.getTitle('music', rand));
+            startSong();
         }
         
         function musicPlaybackQualityChange(event) {
@@ -129,18 +146,13 @@ function youtubeSetup(type, list) {
         
         function onMusicStateChange(event) {
             if(event.data == 0) {
-                
-                var list = _music.getList('music');
-                songIndex = getRandom(0, list.length);
-                musicPlayer.setPlaybackQuality(maxQuality);
-                musicPlayer.loadVideoById(list[songIndex]);
+                startSong();
             }
         }
         
         function onMusicPlayerError(event) {
             log('An error with the music: ', event.data);
-            var rand = getRandom(0, musiclistLength);
-            musicPlayer.loadVideoById(mList[rand]);
+            startSong();
         }
         
         musicPlayer = new YT.Player('ytplayerMusic', {
@@ -340,13 +352,24 @@ function listSetup(type, data, callback) {
         musicList = newList;
     }
     
+    function setDescList(newDescList) {
+        descList = newDescList;
+    }
+    
     function getList(t) {
         if(t == 'video') {
             return videoList;
         } else if(t == 'music') {
             return musicList;
         }
-        return 'List type not specified';
+        return 'List type not supported';
+    }
+    
+    function getDescList(t) {
+        if(t == 'music') {
+            return musicDescList;
+        }
+        return 'List type not supported';        
     }
     
     function getTitle(t, i) {
@@ -362,8 +385,14 @@ function listSetup(type, data, callback) {
         setList : function(list) {
             return setList(list);
         },
+        setDescList : function(list) {
+            return setDescList(list);
+        },
         getList : function(type) {
             return getList(type);
+        },
+        getDescList : function(type) {
+            return getDescList(type);
         },
         getTitle : function(type, index) {
             return getTitle(type, index);
@@ -409,11 +438,10 @@ function setup() {
     });
     
     newSong.on('click', function(){
-        var list = _music.getList('music');
-        songIndex = getRandom(0, list.length);
-        /* log( _music.getTitle('music', songIndex)); */
-        musicPlayer.setPlaybackQuality(maxQuality);
-        musicPlayer.loadVideoById(list[songIndex]);
+        $.post('tracks.php', {action: 'add', track: currentSong}, function(data){
+            //console.log(data); 
+        });
+        startSong();
     });
     
     submitBtn.on('click', function(){
