@@ -108,7 +108,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var windowW = $(window).innerWidth();
 var windowH = $(window).innerHeight();
 var videoPlayer, musicPlayer;
-var playerObj, playerSettings = [60,90], canSeek = false, canPlay = true, nextVid, getTimeInterval, currentVideo, currentTime, endTime, muted = false, currentSong;
+var playerObj, playerSettings = [60,90], canSeek = false, canPlay = true, nextVid, getTimeInterval, currentVideo, currentTime, endTime, muted = false, currentSong, playedSongs = [];
 var maxQuality = 'hd720';
 var overlay = $('.overlay');
 var title = $('#js-title');
@@ -117,11 +117,25 @@ var clickPause = false;
 var clickPlay = false;
 var winning = false;
 
+function getRandomSong(mList) {
+    var rand = getRandom(0, mList.length);
+    
+    if($.inArray(mList[rand], playedSongs) == -1) {
+        playedSongs.push(mList[rand]);
+        if(playedSongs.length == mList.length) {
+            playedSongs = [];
+        }
+    } else {
+        rand = getRandomSong(mList);
+    }
+    
+    return rand;
+}
+
 function startSong() {
     mList = _music.getList('music');
-    var rand = getRandom(0, mList.length);
+    var rand = getRandomSong(mList);
     currentSong = _music.getTitle('music', rand);
-    log('Current song ' + currentSong);
     musicPlayer.setPlaybackQuality(maxQuality);
     musicPlayer.loadVideoById(mList[rand]);
 }
