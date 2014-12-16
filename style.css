@@ -529,41 +529,23 @@ iframe#ytplayer {
         color: #00FFBF;
     }
     @-webkit-keyframes bounce {
-        0%  { 
+        0%, 100%  { 
             -webkit-transform: scale(1);
                     transform: scale(1);   
         }
-        25%{
-            -webkit-transform: scale(1.5);
-                    transform: scale(1.5);
-
-        }
-        75%{
-            -webkit-transform: scale(1.2);
-                    transform: scale(1.2);
-        }
-        100% {
-            -webkit-transform: scale(.7);
-                    transform: scale(.7);            
+        50%  { 
+            -webkit-transform: scale(1.6);
+                    transform: scale(1.6);   
         }
     }
     @keyframes bounce {
-        0%  { 
+        0%, 100%  { 
             -webkit-transform: scale(1);
                     transform: scale(1);   
         }
-        25%{
-            -webkit-transform: scale(1.5);
-                    transform: scale(1.5);
-
-        }
-        75%{
-            -webkit-transform: scale(1.2);
-                    transform: scale(1.2);
-        }
-        100% {
-            -webkit-transform: scale(.7);
-                    transform: scale(.7);            
-        }    
+        50%  { 
+            -webkit-transform: scale(1.6);
+                    transform: scale(1.6);   
+        } 
     }
 /* End overlay loader */
