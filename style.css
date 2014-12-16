@@ -306,7 +306,7 @@ iframe#ytplayer {
         overflow: hidden;
         position: absolute;
         left: 191px;
-        top: 9px;
+        top: -21px;
         background: #2A424F;
         color: white;
         line-height: 24px;
@@ -324,12 +324,17 @@ iframe#ytplayer {
         height: 100%;
         border: 2px solid #00FFBF;
         margin: 0;
-        padding: 15px 7px;
+        padding: 10px 7px;
+    }
+    
+    .controls .social-container .submit-msg p span {
+        margin-bottom: 10px;
+        display: block;
     }
     
     .controls .social-container .submit-msg.in {
         width: 340px;
-        height: 106px;  
+        height: 136px;  
     }
     
 /* end play / pause btn*/

@@ -47,6 +47,7 @@
         <h3><span>Cheap</span><span>Azz</span><span>!</span></h3>
         <p>CheapAzz! for mobile is coming soon! In the meantime, enjoy the ultimate party radio on your modern desktop browser!</p>
     </div>
+    
     <div class="overlay">
         <div class="svg-group">
             <div class="loader-wrapper right">
@@ -88,7 +89,10 @@
             <section class="social-container">
                 <section class="button-container">
                     <div class="submit-msg">
-                        <p style="display:none;">Tweet us your music and video suggestions @Cheap_Azz to submit a track to the ultimate party radio!</p>
+                        <p style="display:none;"><span>Tweet us your music and video suggestions @Cheap_Azz to submit a track to the ultimate party radio!</span>
+                        <a href="https://twitter.com/intent/tweet?screen_name=Cheap_Azz" class="twitter-mention-button" data-size="large" data-related="Cheap_Azz,Cheap_Azz">Tweet to @Cheap_Azz</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                        </p>
                     </div>
                     <button type="button" class="inline button submit" id="submit">Submit track</button>
                 </section>
@@ -104,11 +108,21 @@
     
     <div id="ytplayer"></div>
     <div id="ytplayerMusic"></div>
-    <div class="clickPrevent"></div>
+    <div class="clickPrevent">
+    </div>
     <div class="overlay-winning" style="display:none;">
         <h1 class="js-winning">#</h1>
     </div>
-    
+    <script>
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="script.js"></script>
     <script src="http://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
