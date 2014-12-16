@@ -108,7 +108,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var windowW = $(window).innerWidth();
 var windowH = $(window).innerHeight();
 var videoPlayer, musicPlayer;
-var playerObj, playerSettings = [60,90], canSeek = false, canPlay = true, nextVid, getTimeInterval, currentVideo, currentTime, endTime, muted = false, currentSong, playedSongs = [];
+var playerObj, playerSettings = [60,90], canSeek = false, canPlay = true, nextVid, getTimeInterval, currentVideo, currentTime, endTime, muted = false, currentSong, currentId, playedSongs = [];
 var maxQuality = 'hd720';
 var overlay = $('.overlay');
 var title = $('#js-title');
@@ -136,8 +136,12 @@ function startSong() {
     mList = _music.getList('music');
     var rand = getRandomSong(mList);
     currentSong = _music.getTitle('music', rand);
+    currentId = mList[rand];
     musicPlayer.setPlaybackQuality(maxQuality);
     musicPlayer.loadVideoById(mList[rand]);
+    $.post('tracks.php', {action: 'played', track: currentSong, id: currentId}, function(data){
+        // console.log(data); 
+    });
 }
 
 function youtubeSetup(type, list) {
@@ -452,10 +456,9 @@ function setup() {
     });
     
     newSong.on('click', function(){
-        $.post('tracks.php', {action: 'add', track: currentSong}, function(data){
-            //console.log(data); 
+        $.post('tracks.php', {action: 'add', track: currentSong, id: currentId}, function(data){
+            startSong();
         });
-        startSong();
     });
     
     submitBtn.on('click', function(){
